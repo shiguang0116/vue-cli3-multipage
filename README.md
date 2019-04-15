@@ -20,11 +20,6 @@ npm run serve
 npm run build
 ```
 
-### 测试
-```
-npm run test
-```
-
 ### 整理和修复文件
 ```
 npm run lint
