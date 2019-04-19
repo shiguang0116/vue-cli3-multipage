@@ -12,11 +12,8 @@ const colors = require('colors');
 // 配置选项
 const config = {
     pages: Object.assign(getPages(), {
-        app: './src/main.js'    // 会生成 app.html，vue cli3并没有提供直接配置入口文件的选项
-    }),
-    css: {
-        modules: true
-    }
+        app: './src/main.js'    // 配置主入口文件（会生成 app.html，vue cli3并没有提供直接配置入口文件的选项）
+    })
 };
 
 // 获取多页面的配置数据
@@ -36,15 +33,14 @@ function getPages() {
         const entryFile = `./entry/${pageCode}.js`;
         fs.exists(entryFile, function (exists) {
             if(exists) return;
+            // 创建文件及写入文件内容
             const appTpl = '.' + pageUrl;
-            // const mainUrl = '../src/main.js';
-            // const entryData = `import Vue from 'vue';\nimport App from '${appTpl}';\nimport '${mainUrl}';\nVue.config.productionTip = false;\nnew Vue({ render: h => h(App) }).$mount('#${pageCode}'); `;
             const entryData = `import Vue from 'vue';\nimport App from '${appTpl}';\nVue.config.productionTip = false;\nnew Vue({ render: h => h(App) }).$mount('#${pageCode}'); `;
             fs.writeFile(entryFile, entryData, function(err){
                 if(err) console.log(err);
             });
         });
-        // 页面数据
+        // 自定义页面数据
         const pageData = pagesJson[pageCode] || {};
         Object.assign(pageData, {
             url: pageUrl,
