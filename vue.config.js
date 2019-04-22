@@ -31,7 +31,7 @@ function getPages() {
         }
         // 生成入口文件
         const entryFile = `./entry/${pageCode}.js`;
-        fs.exists(entryFile, function (exists) {
+        fs.exists(entryFile, function (exists) {      // 这里没有对文件目录进行判断，所以需要先建一个'entry'文件夹，否则会报错
             if(exists) return;
             // 创建文件及写入文件内容
             const appTpl = '.' + pageUrl;
@@ -41,7 +41,7 @@ function getPages() {
             });
         });
         // 自定义页面数据
-        const pageData = pagesJson[pageCode] || {};
+        const pageData = pagesJson[pageCode] || { title: 'vue cli3' };
         Object.assign(pageData, {
             url: pageUrl,
             code: pageCode
@@ -49,7 +49,7 @@ function getPages() {
         // 配置多页面
         pages[pageCode] = {
             entry: entryFile,               // 入口文件
-            template: 'index.html',         // 模板文件
+            template: './public/index.html',// 模板文件
             filename: pageCode + '.html',   // 打包后的文件路径
             minify: false,                  // 是否压缩
             chunks: ['chunk-vendors', 'chunk-common', 'app', pageCode],   // 引入资源文件
