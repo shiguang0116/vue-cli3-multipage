@@ -41,7 +41,7 @@ function getPages() {
             });
         });
         // 自定义页面数据
-        const pageData = pagesJson[pageCode] || { title: 'vue cli3' };
+        const pageData = pagesJson[pageCode] || {};
         Object.assign(pageData, {
             url: pageUrl,
             code: pageCode
