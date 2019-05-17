@@ -28,6 +28,7 @@ function getPages() {
         if(pages[pageCode]){
             console.error(colors.red(`文件名不能重复使用：${pageCode}。\n`));
             process.exit(1);
+            // console.error(new Error(colors.red(`文件名不能重复使用：${pageCode}。\n`)));
         }
         // 生成入口文件
         const entryFile = `./entry/${pageCode}.js`;
