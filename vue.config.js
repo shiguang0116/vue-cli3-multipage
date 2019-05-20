@@ -1,7 +1,7 @@
 /**
  * @description: vue cli3 配置文件
- * @author: guang.shi <https://blog.csdn.net/guang_s> 
- * @date: 2019-04-12 13:51:21 
+ * @author: guang.shi <https://blog.csdn.net/guang_s>
+ * @date: 2019-04-12 13:51:21
  */
 
 const path = require('path');
@@ -20,7 +20,7 @@ const config = {
 function getPages() {
     const pages = {};
     const pagesJson = require('./config/page.json');
-    
+
     glob.sync('./src/pages/**/*.vue').forEach(function (pageUrl) {
         const ext = path.extname(pageUrl);
         const pageCode = path.basename(pageUrl, ext);
@@ -28,7 +28,6 @@ function getPages() {
         if(pages[pageCode]){
             console.error(colors.red(`文件名不能重复使用：${pageCode}。\n`));
             process.exit(1);
-            // console.error(new Error(colors.red(`文件名不能重复使用：${pageCode}。\n`)));
         }
         // 生成入口文件
         const entryFile = `./entry/${pageCode}.js`;

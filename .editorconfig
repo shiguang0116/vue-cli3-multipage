@@ -10,3 +10,5 @@ trim_trailing_whitespace = true
 
 [src/**]
 indent_size = 4
+[vue.config.js]
+indent_size = 4
