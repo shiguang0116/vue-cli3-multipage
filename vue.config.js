@@ -7,7 +7,7 @@
 const path = require('path');
 const fs = require('fs');
 const glob = require('glob');
-const colors = require('colors');
+const colors = require('colors-console');
 
 // 配置选项
 const config = {
@@ -26,7 +26,7 @@ function getPages() {
         const pageCode = path.basename(pageUrl, ext);
         // 文件名不能重复的验证（pageCode 在这里取的是文件名）
         if(pages[pageCode]){
-            console.error(colors.red(`文件名不能重复使用：${pageCode}。\n`));
+            console.error(colors('red', `文件名不能重复使用：${pageCode}。\n`));
             process.exit(1);
         }
         // 生成入口文件
@@ -37,6 +37,7 @@ function getPages() {
             const appTpl = '.' + pageUrl;
             const entryData = `import Vue from 'vue';\nimport App from '${appTpl}';\nVue.config.productionTip = false;\nnew Vue({ render: h => h(App) }).$mount('#${pageCode}'); `;
             fs.writeFile(entryFile, entryData, function(err){
+                // err.code === 'ENOENT'
                 if(err) console.log(err);
             });
         });

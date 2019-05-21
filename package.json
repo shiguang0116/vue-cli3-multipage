@@ -5,11 +5,13 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "dev": "vue-cli-service serve",
+    "start": "npm run dev",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^2.6.5",
+    "sg-utils": "^1.4.6",
     "vue": "^2.6.6"
   },
   "devDependencies": {
@@ -17,7 +19,7 @@
     "@vue/cli-plugin-eslint": "^3.5.0",
     "@vue/cli-service": "^3.5.0",
     "babel-eslint": "^10.0.1",
-    "colors": "^1.3.3",
+    "colors-console": "^1.0.2",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
     "glob": "^7.1.3",
