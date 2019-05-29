@@ -8,7 +8,5 @@ end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[src/**]
-indent_size = 4
-[vue.config.js]
+[{src/**,vue.config.js}]
 indent_size = 4
